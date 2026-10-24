@@ -1,0 +1,11 @@
+.venv
+.venv-cosyvoice
+__pycache__
+*.pyc
+*.egg-info
+.git
+.pretrained_models
+references
+outputs
+checkpoints
+third_party

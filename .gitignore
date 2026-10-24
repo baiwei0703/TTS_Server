@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual environment
+.venv/
+.venv-cosyvoice/
+venv/
+
+# Model weights
+checkpoints/
+pretrained_models/
+third_party/
+references/
+
+# Outputs
+output.wav
+*.wav
+*.mp3
+*.pcm
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime outputs
+outputs/
+
+# Local backups
+*.bak-*

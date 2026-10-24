@@ -1,0 +1,27 @@
+services:
+  cosyvoice-tts:
+    build: .
+    image: cosyvoice-tts-server:latest
+    container_name: cosyvoice-tts
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount CosyVoice source code from host
+      - ./third_party/CosyVoice:/app/third_party/CosyVoice
+      # Mount the model downloaded on host
+      - ./pretrained_models/CosyVoice2-0.5B:/app/pretrained_models/CosyVoice2-0.5B
+      # Persist saved voices and outputs
+      - ./references:/app/references
+      - ./outputs:/app/outputs
+    environment:
+      - ENGINE=cosyvoice
+      - MODEL_DIR=/app/pretrained_models/CosyVoice2-0.5B
+      - DEVICE=auto
+      - TEXT_FRONTEND=true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

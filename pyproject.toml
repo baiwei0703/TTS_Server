@@ -1,0 +1,33 @@
+[project]
+name = "cosyvoice-tts-server"
+version = "0.2.0"
+description = "基于 CosyVoice 2.0 的 Web 语音克隆 TTS 服务"
+requires-python = ">=3.10,<3.13"
+authors = [{ name = "Your Name" }]
+dependencies = [
+    "fastapi>=0.111",
+    "uvicorn[standard]>=0.30",
+    "python-multipart>=0.0.9",
+    "jinja2>=3.1",
+    "aiofiles>=24.1",
+    "httpx>=0.27",
+    "numpy>=1.23",
+    "soundfile>=0.12.1",
+    "pydub>=0.25.1",
+    "loguru>=0.7",
+    "modelscope>=1.20.0",
+    "torch>=2.3.1",
+    "torchaudio>=2.3.1",
+]
+
+[tool.uv.pip]
+# 国内 PyPI 镜像
+index-url = "https://mirrors.aliyun.com/pypi/simple/"
+
+[tool.setuptools]
+packages = ["engines"]
+py-modules = ["app", "download_models"]
+
+[tool.uv.extra-build-dependencies]
+# openai-whisper 的 setup.py 依赖 pkg_resources，但没有声明 setuptools
+openai-whisper = ["setuptools"]
